@@ -4,21 +4,173 @@
   <meta charset="UTF-8">
   <title>Machine Learning Class</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="Machine Learning Class Materials">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme: Dark -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
+  
   <style>
-    /* Premium touches */
+    /* Premium ML Aesthetics */
     :root {
-      --theme-color: #42b983;
+      --theme-color: #64ffda; /* Neon Green/Cyan for accents */
+      --primary-color: #64ffda;
+      --base-font-size: 16px;
+      --font-family: 'Inter', sans-serif;
+      --code-font-family: 'JetBrains Mono', monospace;
+      --sidebar-width: 300px;
+      --bg-color: #0a192f; /* Deep Navy */
+      --text-color: #8892b0;
+      --heading-color: #ccd6f6;
+      --blockquote-color: #8892b0;
+      --link-color: #64ffda;
     }
-    .markdown-section { 
-        max-width: 95%; /* Allow table to breathe */
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      -webkit-font-smoothing: antialiased;
     }
+
+    /* Sidebar Glassmorphism */
+    .sidebar {
+      background: rgba(10, 25, 47, 0.95);
+      border-right: 1px solid rgba(100, 255, 218, 0.1);
+    }
+    
+    .sidebar-nav li {
+        margin: 5px 0;
+    }
+    
+    .sidebar-nav a {
+        color: var(--text-color) !important;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .sidebar-nav a:hover, .sidebar-nav li.active > a {
+        color: var(--theme-color) !important;
+        border-right: 2px solid var(--theme-color);
+        background: rgba(100, 255, 218, 0.05);
+    }
+
+    /* Main Content */
+    .markdown-section {
+        max-width: 90%;
+        margin: 0 auto;
+        padding-top: 3rem;
+    }
+
+    .markdown-section h1, .markdown-section h2, .markdown-section h3 {
+        color: var(--heading-color);
+        font-weight: 700;
+    }
+
+    .markdown-section a {
+        color: var(--link-color);
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+    
+    .markdown-section a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    /* Code Blocks */
+    .markdown-section pre {
+        background: #112240;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    .markdown-section code {
+        font-family: var(--code-font-family);
+        color: #e6f1ff;
+    }
+
+    /* Tables */
     table {
         display: block;
         width: 100%;
         overflow: auto;
+        border-collapse: collapse;
+        margin: 1em 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    th {
+        background: #233554;
+        color: var(--theme-color);
+        padding: 12px;
+        text-align: left;
+    }
+    
+    td {
+        border-bottom: 1px solid #233554;
+        padding: 12px;
+    }
+
+    /* Blockquotes */
+    .markdown-section blockquote {
+        background: rgba(100, 255, 218, 0.05);
+        border-left: 4px solid var(--theme-color);
+        border-radius: 4px;
+        color: var(--blockquote-color);
+        margin: 2em 0;
+        padding: 1em;
+    }
+
+    /* Cover Page Tweaks */
+    section.cover h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: -webkit-linear-gradient(45deg, #64ffda, #bd34fe);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+    }
+    
+    section.cover h2 {
+        font-family: 'Inter', sans-serif;
+        color: #e6f1ff;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+    }
+
+    section.cover .cover-main > p:last-child a {
+        border-color: var(--theme-color);
+        color: var(--theme-color);
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    section.cover .cover-main > p:last-child a:hover {
+        background: var(--theme-color);
+        color: #0a192f;
+        box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #233554;
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #64ffda;
     }
   </style>
 </head>
@@ -32,7 +184,9 @@
       subMaxLevel: 2,
       search: 'auto',
       auto2top: true,
-      homepage: 'README.md'
+      homepage: 'README.md',
+      coverpage: true,
+      themeColor: '#64ffda'
     }
   </script>
   <!-- Docsify v4 -->
